@@ -4,6 +4,8 @@
  * Typed error hierarchy for spec reading, extraction, and decoding failures (§1.5 of docs/CONTRACT_DOCS_DESIGN.md).
  */
 
+import type { Network } from '@signet/types';
+
 /**
  * Base class for all spec reader errors.
  */
@@ -23,9 +25,9 @@ export abstract class SpecReadError extends Error {
 export class ContractNotFound extends SpecReadError {
   readonly kind = 'contract_not_found' as const;
   readonly address: string;
-  readonly network: string;
+  readonly network: Network;
 
-  constructor(address: string, network: string) {
+  constructor(address: string, network: Network) {
     super(`Contract ${address} not found on ${network}`);
     this.address = address;
     this.network = network;
