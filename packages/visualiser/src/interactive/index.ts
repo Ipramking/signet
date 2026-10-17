@@ -22,6 +22,19 @@ export {
   relatedTo,
 } from './details.ts';
 
+export type {
+  EnhanceViewportOptions,
+  ViewportController,
+} from './viewport.ts';
+export {
+  DEFAULT_BASE_FONT_PX,
+  DEFAULT_MAX_SCALE,
+  DEFAULT_VIEWPORT_LABEL,
+  VIEWPORT_CLASSES,
+  computeZoomSteps,
+  enhanceViewport,
+} from './viewport.ts';
+
 /**
  * Placeholder for the pan/zoom/selection enhancer that lands in #501–#505.
  * Kept so the package's `./interactive` entry has a stable surface while that
@@ -30,3 +43,4 @@ export {
 export function enhanceInteractive(): never {
   throw new Error('@signet/visualiser interactive enhancer is not implemented yet (see #501–#505)');
 }
+
