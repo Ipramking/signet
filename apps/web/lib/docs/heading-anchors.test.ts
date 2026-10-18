@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { parseContractSpec, toSpecJson } from '@signet/spec';
 import { withFlattenedViews } from '../contract-overview.ts';
 import { errorAnchor, fnAnchor, typeAnchor } from './anchors.ts';
-import { buildErrorReference } from './error-reference.ts';
+import { buildErrorReference, type ErrorTable } from './error-reference.ts';
 import { buildTypeReference } from './type-reference.ts';
 import { buildFunctionReference, typesTabHref } from './function-reference.ts';
 import { buildFunctionsToc, buildTypesToc } from './toc.ts';
@@ -98,7 +98,7 @@ test('types_zoo: every error heading carries the id errorAnchor returns', () => 
   assert.equal(errorTocItems.length, errorRef.tables.length);
 
   for (let i = 0; i < errorRef.tables.length; i++) {
-    const table = errorRef.tables[i]!;
+    const table: ErrorTable = errorRef.tables[i]!;
     assert.equal(errorTocItems[i]!.title, table.enumName);
     assert.equal(errorTocItems[i]!.href, `#${errorAnchor(table.enumName)}`);
     assert.equal(errorTocItems[i]!.id, errorAnchor(table.enumName));
