@@ -73,6 +73,10 @@ function createCliEnv(configDir: string): NodeJS.ProcessEnv {
     ...process.env,
     XDG_CONFIG_HOME: configDir,
     STELLAR_CONFIG_HOME: path.join(configDir, 'stellar'),
+    // `stellar tx sign --network-passphrase` can demand an RPC URL on CI's runner
+    // ("network passphrase is used but rpc-url is missing"). Signing is offline and never
+    // contacts it, so point it at an address nothing listens on.
+    STELLAR_RPC_URL: process.env.STELLAR_RPC_URL ?? 'http://127.0.0.1:1',
   };
 }
 
