@@ -54,7 +54,7 @@ export function TableOfContentsSticky({ items, className }: TableOfContentsProps
 
   return (
     <aside
-      className={`sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto w-52 shrink-0 ${className ?? ''}`}
+      className={`hidden lg:block sticky top-24 self-start max-h-[calc(100vh-6rem)] overflow-y-auto w-52 shrink-0 ${className ?? ''}`}
       data-testid="toc-sticky"
       aria-label="Table of contents"
     >
